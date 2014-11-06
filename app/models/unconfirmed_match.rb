@@ -7,7 +7,7 @@ class UnconfirmedMatch
 
 
   def self.confirm_matches
-    old_matches = UnconfirmedMatch.where(:created_at.lte => (Time.now - 1.second))
+    old_matches = UnconfirmedMatch.where(:created_at.lte => (Time.now - 3.days))
     new_matches = old_matches.map { |match| ConfirmedMatch.create(match.attributes) }
     old_matches.map { |match| match.delete }
   end
