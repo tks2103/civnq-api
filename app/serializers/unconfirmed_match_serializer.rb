@@ -5,4 +5,12 @@ class UnconfirmedMatchSerializer < ActiveModel::Serializer
     object.id.to_s
   end
 
+  def teams
+	teams = object.teams.map { |team| 
+		team.map { |player| 
+			User.find_by(steamid: player).username
+		} 
+	}
+  end
+
 end
