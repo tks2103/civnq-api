@@ -2,9 +2,9 @@ class User
   include Mongoid::Document
 
   def self.strip_id(url)
-    url.split("/").last.to_i
+    url.split("/").last
   end
 
-  field :steamid,       type: Integer
+  field :steamid,       type: String
   field :username,      type: String
 end

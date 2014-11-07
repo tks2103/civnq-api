@@ -13,4 +13,29 @@ class UnconfirmedMatchSerializer < ActiveModel::Serializer
 	}
   end
 
+  def match_type
+	if object.match_type == 0
+		return "FFA"
+	end
+	if object.match_type == 1
+		return "Duel"
+	end
+	if object.match_type == 2
+		return "Teamer"
+	end
+  end
+
+  def game
+	if object.game == 0
+		return "Civilization V"
+	end
+	if object.game == 1
+		return "Civilization Beyond Earth"
+	end
+  end
+
+  def reporter_id
+  	User.find_by(steamid: object.reporter_id).username
+  end
+
 end

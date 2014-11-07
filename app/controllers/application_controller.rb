@@ -10,8 +10,7 @@ class ApplicationController < ActionController::API
 
     def current_user
       return nil unless logged_in?
-      user = User.find_by(steamid: session[:steamid])
-      user
+      @user ||= User.find_by(steamid: session[:steamid])
     end
 
 
